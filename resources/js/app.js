@@ -6,8 +6,6 @@ import { ZiggyVue } from 'ziggy-js';
 //import { initializeTheme } from './composables/useAppearance';
 import { initFlowbite } from 'flowbite';
 
-router.on('navigate', () => initFlowbite());
-
 const appName = import.meta.env.VITE_APP_NAME || 'Laravel';
 
 createInertiaApp({
