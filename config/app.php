@@ -66,6 +66,7 @@ return [
     */
 
     'timezone' => 'UTC',
+    'timezone_display' => env('APP_TIMEZONE_DISPLAY', 'UTC'),
 
     /*
     |--------------------------------------------------------------------------
