@@ -30,4 +30,6 @@ Route::get('/login', fn () => inertia('Users/Login'))->name('login');
 Route::post('/login', [UserController::class, 'login'])->name('login');
 Route::get('/logout', [UserController::class, 'logout'])->name('logout');
 
+Route::get('/dev/{view}', fn (string $view) => inertia(str_replace("-", "/", $view)))->name('dev.view'); // FOR DEVELOPMENT ONLY, TODO: remove in production
+
 Route::resource('users', UserController::class);
