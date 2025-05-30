@@ -15,8 +15,8 @@ const form = useForm({
         <div class="flex items-center justify-center h-screen">
             <div class="w-full max-w-md">
                 <div class="mb-4 text-center">
-                    <h1 class="text-3xl font-bold text-gray-900 dark:text-gray-100">Register</h1>
-                    <p class="text-gray-500 dark:text-gray-400">Enter your credentials below</p>
+                    <h1 class="text-3xl font-bold text-gray-900 dark:text-gray-100">Registrarse</h1>
+                    <p class="text-gray-500 dark:text-gray-400">Ingrese sus credenciales a continuación</p>
                 </div>
 
                 <form @submit.prevent="form.post(route('users.store'))" class="max-w-sm mx-auto">
