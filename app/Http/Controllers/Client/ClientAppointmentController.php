@@ -1,15 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Client;
 
+use App\Http\Controllers\AppointmentController;
+use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreAppointmentRequest;
-use App\Http\Requests\UpdateAppointmentRequest;
-use App\Models\Appointment;
-use App\Models\Client;
-use App\Models\Technician;
-use App\Models\Vehicle;
+use Illuminate\Http\Request;
 
-class AppointmentController extends Controller
+class ClientAppointmentController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -24,10 +22,8 @@ class AppointmentController extends Controller
      */
     public function create()
     {
-        return inertia('Appointments/Create', [
-            'clients' => Client::all(),
-            'vehicles' => Vehicle::all(),
-            'technicians' => Technician::all(),
+        return inertia('Clients/CreateAppointment', [
+            'vehicles' => request()->user()->client->vehicles,
         ]);
     }
 
@@ -42,7 +38,7 @@ class AppointmentController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Appointment $appointment)
+    public function show(string $id)
     {
         //
     }
@@ -50,7 +46,7 @@ class AppointmentController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Appointment $appointment)
+    public function edit(string $id)
     {
         //
     }
@@ -58,7 +54,7 @@ class AppointmentController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateAppointmentRequest $request, Appointment $appointment)
+    public function update(Request $request, string $id)
     {
         //
     }
@@ -66,7 +62,7 @@ class AppointmentController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Appointment $appointment)
+    public function destroy(string $id)
     {
         //
     }
