@@ -13,7 +13,9 @@ class VehicleController extends Controller
      */
     public function index()
     {
-        //
+        return inertia('Vehicles/Index', [
+            'vehicles' => Vehicle::with('client')->get(),
+        ]);
     }
 
     /**
@@ -21,7 +23,7 @@ class VehicleController extends Controller
      */
     public function create()
     {
-        //
+        return inertia('Vehicles/Create');
     }
 
     /**
@@ -29,7 +31,9 @@ class VehicleController extends Controller
      */
     public function store(StoreVehicleRequest $request)
     {
-        //
+        Vehicle::create($request->validated());
+
+        return to_route('dashboard')->with('success', 'Vehiculo registrado satisfactoriamente.');
     }
 
     /**

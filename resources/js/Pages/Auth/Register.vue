@@ -19,7 +19,7 @@ const form = useForm({
                     <p class="text-gray-500 dark:text-gray-400">Enter your credentials below</p>
                 </div>
 
-                <form @submit.prevent="form.post(route('users.store'))" class="max-w-sm mx-auto">
+                <form @submit.prevent="form.post(route('register'))" class="max-w-sm mx-auto">
                     <div class="mb-5">
                         <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nombre completo</label>
                         <FormError :error="form.errors?.name" />

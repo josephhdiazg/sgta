@@ -1,9 +1,8 @@
 import '../css/app.css';
 
-import { createInertiaApp } from '@inertiajs/vue3';
+import { createInertiaApp, router } from '@inertiajs/vue3';
 import { createApp, h } from 'vue';
 import { ZiggyVue } from 'ziggy-js';
-//import { initializeTheme } from './composables/useAppearance';
 import { initFlowbite } from 'flowbite';
 
 const appName = import.meta.env.VITE_APP_NAME || 'Laravel';
@@ -24,7 +23,5 @@ createInertiaApp({
 });
 
 // This will initialize Flowbite for the Inertia app on page load...
+router.on('navigate', () => initFlowbite());
 initFlowbite();
-
-// This will set light / dark mode on page load...
-//initializeTheme();
