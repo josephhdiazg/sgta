@@ -24,10 +24,17 @@ class UserController extends Controller
      */
     public function search()
     {
-        $users = User::query()->paginate(50); /*where('handle', 'like', request('query'))*/
+        $users = User::query(); /*where('handle', 'like', request('query'))*/
+
+        if (request('query')) {
+            $users->where(function ($query) {
+                $query->where('name', 'like', '%' . request('query') . '%')
+                      ->orWhere('email', 'like', '%' . request('query') . '%');
+            });
+        }
 
         return inertia('Users/Index', [
-            'users' => $users
+            'users' => $users->paginate(50),
         ]);
     }
 
