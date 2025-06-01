@@ -48,7 +48,7 @@ class User extends Authenticatable
         ];
     }
 
-
+    protected $with = ['client', 'technician'];
 
     public function client(): HasOne
     {

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AppointmentController;
+use App\Http\Controllers\Client\ClientAppointmentController;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ServiceRecordController;
@@ -32,9 +33,8 @@ Route::get('/', fn () =>
 Route::middleware('auth')->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
-    Route::get('/dev/{view}', fn (string $view) => inertia(str_replace("-", "/", $view)))->name('dev.view'); // FOR DEVELOPMENT ONLY, TODO: remove in production
-
     Route::resource('clients', ClientController::class);
+    Route::resource('clients.appointments', ClientAppointmentController::class)->only(['index', 'create', 'store']);
     Route::resource('vehicles', VehicleController::class);
     Route::resource('appointments', AppointmentController::class);
     Route::resource('technicians', TechnicianController::class);

@@ -22,6 +22,10 @@ createInertiaApp({
     progress: true,
 });
 
-// This will initialize Flowbite for the Inertia app on page load...
-router.on('navigate', () => initFlowbite());
+// Initialize Flowbite on first load
 initFlowbite();
+
+// Initialize Flowbite on every Inertia page load
+router.on('finish', () => {
+    initFlowbite();
+});

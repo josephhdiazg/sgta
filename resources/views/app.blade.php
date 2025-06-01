@@ -17,9 +17,8 @@
         <title>{{ config('app.name', 'SGTA') }}</title>
 
         @routes
-
+        <link href="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.css" rel="stylesheet" />
         @vite(['resources/css/app.css', 'resources/js/app.js'])
-
         @inertiaHead
     </head>
 

@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Client;
 use App\Http\Controllers\AppointmentController;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreAppointmentRequest;
+use App\Models\Client;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class ClientAppointmentController extends Controller
@@ -20,10 +22,10 @@ class ClientAppointmentController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(Client $client)
     {
         return inertia('Clients/CreateAppointment', [
-            'vehicles' => request()->user()->client->vehicles,
+            'vehicles' => $client->vehicles,
         ]);
     }
 
@@ -32,7 +34,7 @@ class ClientAppointmentController extends Controller
      */
     public function store(StoreAppointmentRequest $request)
     {
-        //
+
     }
 
     /**

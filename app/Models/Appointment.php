@@ -28,6 +28,11 @@ class Appointment extends Model
         return $this->belongsTo(User::class);
     }
 
+    public function technician(): BelongsTo
+    {
+        return $this->belongsTo(Technician::class);
+    }
+
     public function serviceRecords(): HasMany
     {
         return $this->hasMany(ServiceRecord::class);

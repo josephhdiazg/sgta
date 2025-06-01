@@ -2,12 +2,12 @@
 import DefaultLayout from '@/Layouts/Default.vue';
 import VehicleItem from '@/Components/VehicleItem.vue';
 
-defineProps(
+defineProps({
     vehicles: {
         type: Array,
         default: () => [],
     }
-)
+});
 </script>
 
 <template>
