@@ -8,7 +8,6 @@ use App\Models\Appointment;
 use App\Models\Client;
 use App\Models\Technician;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Gate;
 use Inertia\Inertia;
@@ -82,37 +81,5 @@ class ClientAppointmentController extends Controller
         return to_route('appointments.show', [$client, $appointment])->with([
             'success' => 'Cita creada correctamente.'
         ]);
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $appointment)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
     }
 }

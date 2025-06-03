@@ -50,8 +50,6 @@ function translateStatus(status) {
                     </template>
                 </Table>
 
-
-
         <div class="flex flex-col items-center mt-5">
             <!-- Help text -->
             <span class="text-sm text-gray-700 dark:text-gray-400">
@@ -60,10 +58,10 @@ function translateStatus(status) {
             <!-- Buttons -->
             <div class="inline-flex mt-2 xs:mt-0">
                 <button :disabled="!appointments.prev_page_url" @click="router.get(appointments.prev_page_url)" class="flex items-center justify-center px-4 h-10 text-base font-medium text-white bg-gray-800 rounded-s hover:bg-gray-900 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
-                    Prev
+                    Anterior
                 </button>
                 <button :disabled="!appointments.next_page_url" @click="router.get(appointments.next_page_url)" class="flex items-center justify-center px-4 h-10 text-base font-medium text-white bg-gray-800 border-0 border-s border-gray-700 rounded-e hover:bg-gray-900 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
-                    Next
+                    Siguiente
                 </button>
             </div>
         </div>

@@ -2,15 +2,13 @@
 
 use App\Http\Controllers\AppointmentController;
 use App\Http\Controllers\Client\ClientAppointmentController;
+use App\Http\Controllers\Client\ClientVehicleController;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ServiceRecordController;
 use App\Http\Controllers\TechnicianController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\UserController;
 use App\Http\Controllers\VehicleController;
-use App\Models\User;
-use App\Models\Vehicle;
 use Illuminate\Support\Facades\Auth;
 
 /*
@@ -30,13 +28,12 @@ Route::get('/', fn () =>
         : to_route('login')
 )->name('index');
 
-Route::get('/dev/{path}', fn ($path) => inertia(str_replace('-', '/', $path)));
-
 Route::middleware('auth')->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
     Route::resource('clients', ClientController::class);
-    Route::resource('clients.appointments', ClientAppointmentController::class);
+    Route::resource('clients.appointments', ClientAppointmentController::class)->shallow();
+    Route::resource('clients.vehicles', ClientVehicleController::class)->shallow();
 
     Route::resource('technicians', TechnicianController::class);
     Route::resource('technicians.appointments', ClientAppointmentController::class);
