@@ -42,7 +42,7 @@ const form = useForm({
                     </div>
 
                     <div class="flex items-start mb-8">
-                        <span class="text-sm italic font-medium text-gray-900 dark:text-gray-300">Haciendo click en "Crear cuenta", usted acepta nuestros Terminos y Condiciones de Servicio.</span>
+                        <span class="text-sm italic font-medium text-gray-900 dark:text-gray-300">Haciendo click en "Crear cuenta", usted acepta nuestros Términos y Condiciones de Servicio.</span>
                     </div>
 
                     <Link :href="route('login')" class="my-2.5 float-right text-blue-600 text-sm hover:underline dark:text-blue-500">Ya tengo una cuenta</Link>

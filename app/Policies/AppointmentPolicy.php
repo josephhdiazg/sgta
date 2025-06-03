@@ -13,7 +13,7 @@ class AppointmentPolicy
      */
     public function viewAny(User $user): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -21,7 +21,9 @@ class AppointmentPolicy
      */
     public function view(User $user, Appointment $appointment): bool
     {
-        return false;
+        return $user->role === 'admin' || $user->role === 'receptionist'
+            || ($user->role === 'technician' && $user->id === $appointment->technician_id)
+            || ($user->role === 'client' && $user->id === $appointment->vehicle->client->user_id);
     }
 
     /**
@@ -29,7 +31,7 @@ class AppointmentPolicy
      */
     public function create(User $user): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -45,7 +47,8 @@ class AppointmentPolicy
      */
     public function delete(User $user, Appointment $appointment): bool
     {
-        return false;
+        return $user->role === 'admin' || $user->role === 'receptionist'
+            || ($user->role === 'client' && $user->id === $appointment->vehicle->client->user_id);
     }
 
     /**

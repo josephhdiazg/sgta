@@ -2,7 +2,9 @@
 
 namespace App\Http\Requests;
 
+use App\Models\Appointment;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Gate;
 
 class StoreAppointmentRequest extends FormRequest
 {
@@ -11,7 +13,7 @@ class StoreAppointmentRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return Gate::allows('create', Appointment::class);
     }
 
     /**
@@ -22,7 +24,11 @@ class StoreAppointmentRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'client_id' => ['nullable', 'exists:clients,id'],
+            'vehicle_id' => ['required', 'exists:vehicles,id'],
+            'technician_id' => ['nullable'],
+            'date' => ['required', 'date'],
+            'time' => ['required', 'date_format:H:i'],
         ];
     }
 }

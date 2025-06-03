@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('service_description')->nullable();
             $table->string('status')->default('scheduled'); // Possible values: scheduled, completed, cancelled
             $table->foreignIdFor(\App\Models\User::class)->constrained()->onDelete('cascade');
+            $table->foreignIdFor(\App\Models\Technician::class)->nullable();
             $table->timestamps();
         });
     }
