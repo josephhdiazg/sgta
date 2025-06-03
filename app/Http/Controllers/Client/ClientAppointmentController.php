@@ -29,7 +29,7 @@ class ClientAppointmentController extends Controller
 
         return Inertia::render('Clients/Appointments/Index', [
             'appointments' => $appointments,
-            'filter_status' => $filter_status,
+            'filterStatus' => $filter_status,
         ]);
     }
 
@@ -48,7 +48,7 @@ class ClientAppointmentController extends Controller
      */
     public function store(Client $client, StoreAppointmentRequest $request): RedirectResponse
     {
-        Gate::authorize('create', [Appointment::class, 'client']);
+        Gate::authorize('create', Appointment::class);
 
         $data = $request->validated();
 

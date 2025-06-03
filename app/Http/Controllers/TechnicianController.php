@@ -28,7 +28,7 @@ class TechnicianController extends Controller
 
         return inertia('Technicians/Index', [
             'technicians' => $technicians,
-            'filter_search' => $filter_search,
+            'filterSearch' => $filter_search,
         ]);
     }
 

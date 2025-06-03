@@ -26,6 +26,7 @@ class StoreAppointmentRequest extends FormRequest
         return [
             'client_id' => ['nullable', 'exists:clients,id'],
             'vehicle_id' => ['required', 'exists:vehicles,id'],
+            'technician_id' => ['nullable'],
             'date' => ['required', 'date'],
             'time' => ['required', 'date_format:H:i'],
         ];

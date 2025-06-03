@@ -43,10 +43,10 @@ class AppointmentController extends Controller
         ->paginate(10)
         ->withQueryString();
 
-        return Inertia::render('Clients/Appointments/Index', [
+        return Inertia::render('Appointments/Index', [
             'appointments' => $appointments,
-            'filter_search' => $filter_search,
-            'filter_status' => $filter_status,
+            'filterSearch' => $filter_search,
+            'filterStatus' => $filter_status,
         ]);
     }
 
@@ -63,8 +63,7 @@ class AppointmentController extends Controller
                     $q->where('id', $client_id);
                 });
             })
-            ->paginate(10)
-            ->withQueryString();
+            ->get();
 
         return Inertia::render('Appointments/Create', [
             'clients' => Client::with('user')->get(),
@@ -120,7 +119,7 @@ class AppointmentController extends Controller
         $appointment->technician_id = $data['technician_id'];
         $appointment->save();
 
-        return to_route('appointments.show', [$client, $appointment])->with([
+        return to_route('appointments.show', $appointment)->with([
             'success' => 'Cita creada correctamente.'
         ]);
     }

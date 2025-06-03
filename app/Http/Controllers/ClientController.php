@@ -27,7 +27,7 @@ class ClientController extends Controller
 
         return inertia('Clients/Index', [
             'clients' => $clients,
-            'filter_search' => $filter_search,
+            'filterSearch' => $filter_search,
         ]);
     }
 

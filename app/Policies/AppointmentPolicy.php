@@ -29,9 +29,9 @@ class AppointmentPolicy
     /**
      * Determine whether the user can create models.
      */
-    public function create(User $user, string $context): bool
+    public function create(User $user): bool
     {
-        return $context === 'client' ? $user->role === 'client' : $user->role !== 'client';
+        return true;
     }
 
     /**

@@ -34,7 +34,7 @@ class VehicleController extends Controller
 
         return Inertia::render('Vehicles/Index', [
             'vehicles' => $vehicles,
-            'filter_search' => $filter_search,
+            'filterSearch' => $filter_search,
         ]);
     }
 
