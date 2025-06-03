@@ -42,6 +42,7 @@ class HandleInertiaRequests extends Middleware
             'auth' => [
                 'user' => $request->user(),
             ],
+            'timezone_display' => config('app.timezone_display'),
             'ziggy' => [
                 ...(new Ziggy)->toArray(),
                 'location' => $request->url(),

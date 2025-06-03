@@ -15,8 +15,8 @@ const form = useForm({
         <div class="flex items-center justify-center h-screen">
             <div class="w-full max-w-md">
                 <div class="mb-4 text-center">
-                    <h1 class="text-3xl font-bold text-gray-900 dark:text-gray-100">Register</h1>
-                    <p class="text-gray-500 dark:text-gray-400">Enter your credentials below</p>
+                    <h1 class="text-3xl font-bold text-gray-900 dark:text-gray-100">Registrarse</h1>
+                    <p class="text-gray-500 dark:text-gray-400">Ingrese sus credenciales a continuación</p>
                 </div>
 
                 <form @submit.prevent="form.post(route('register'))" class="max-w-sm mx-auto">
@@ -42,7 +42,7 @@ const form = useForm({
                     </div>
 
                     <div class="flex items-start mb-8">
-                        <span class="text-sm italic font-medium text-gray-900 dark:text-gray-300">Haciendo click en "Crear cuenta", usted acepta nuestros Terminos y Condiciones de Servicio.</span>
+                        <span class="text-sm italic font-medium text-gray-900 dark:text-gray-300">Haciendo click en "Crear cuenta", usted acepta nuestros Términos y Condiciones de Servicio.</span>
                     </div>
 
                     <Link :href="route('login')" class="my-2.5 float-right text-blue-600 text-sm hover:underline dark:text-blue-500">Ya tengo una cuenta</Link>

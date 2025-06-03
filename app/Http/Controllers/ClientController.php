@@ -13,8 +13,21 @@ class ClientController extends Controller
      */
     public function index()
     {
+        $filter_search = request()->query('search');
+
+        $clients = Client::query()
+            ->when($filter_search, function ($q, $filter_search) {
+                $q->whereHas('user', function ($q) use ($filter_search) {
+                    $q->where('name', 'like', '%' . $filter_search . '%');
+                });
+            })
+            ->withCount(['vehicles', 'appointments'])
+            ->paginate(10)
+            ->withQueryString();
+
         return inertia('Clients/Index', [
-            'clients' => Client::all(),
+            'clients' => $clients,
+            'filter_search' => $filter_search,
         ]);
     }
 
@@ -39,7 +52,11 @@ class ClientController extends Controller
      */
     public function show(Client $client)
     {
-        //
+        $client->load('user');
+
+        return inertia('Clients/Show', [
+            'client' => $client,
+        ]);
     }
 
     /**
@@ -47,7 +64,11 @@ class ClientController extends Controller
      */
     public function edit(Client $client)
     {
-        //
+        $client->load('user');
+
+        return inertia('Clients/Edit', [
+            'client' => $client,
+        ]);
     }
 
     /**
@@ -55,7 +76,11 @@ class ClientController extends Controller
      */
     public function update(UpdateClientRequest $request, Client $client)
     {
-        //
+        $client->update($request->validated());
+
+        return to_route('clients.show', $client)->with([
+            'success' => 'Client updated successfully.',
+        ]);
     }
 
     /**

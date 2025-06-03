@@ -9,8 +9,8 @@ const page = usePage();
 const user = computed(() => page.props.auth.user);
 const form = useForm({
     vehicle_id: '',
-    date: null,
-    time: '09:00',
+    date: '',
+    time: '',
 });
 
 const props = defineProps({
@@ -36,11 +36,12 @@ const vehiclesSelect = props.vehicles.map(x => ({ value: x.id, name: `${x.licens
                         :options="vehiclesSelect"
                         label="Vehículo"
                         placeholder="Seleccione un vehículo"
+                        required
                     />
                 </div>
 
                 <FormError :error="form.errors?.date" />
-                <label for="default-datepicker" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Seleccione fecha:</label>
+                <label for="default-datepicker" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Fecha</label>
                 <div class="relative mb-5">
                     <div class="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none">
                         <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
@@ -48,18 +49,19 @@ const vehiclesSelect = props.vehicles.map(x => ({ value: x.id, name: `${x.licens
                         </svg>
                     </div>
 
-                    <input datepicker  id="default-datepicker" type="text" v-model="form.date" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="mm/dd/yyyy" required />
+                    <input datepicker datepicker-autohide datepicker-format="dd/mm/yyyy" id="default-datepicker" type="text" v-model="form.date" @change="form.date = $event.target.value" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="dd/mm/yyyy" required />
                 </div>
 
                 <FormError :error="form.errors?.time" />
-                <label for="time" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Seleccione hora:</label>
+                <label for="time" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Hora</label>
                 <div class="relative mb-5">
                     <div class="absolute inset-y-0 end-0 top-0 flex items-center pe-3.5 pointer-events-none">
                         <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
                             <path fill-rule="evenodd" d="M2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10S2 17.523 2 12Zm11-4a1 1 0 1 0-2 0v4a1 1 0 0 0 .293.707l3 3a1 1 0 0 0 1.414-1.414L13 11.586V8Z" clip-rule="evenodd"/>
                         </svg>
                     </div>
-                    <input type="time" id="time" v-model="form.time" class="bg-gray-50 border leading-none border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" min="09:00" max="18:00" value="00:00" required />
+
+                    <input type="time" id="time" v-model="form.time" class="bg-gray-50 border leading-none border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" min="09:00" max="16:00" value="00:00" required />
                 </div>
 
                 <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Guardar cita</button>

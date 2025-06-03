@@ -30,14 +30,20 @@ Route::get('/', fn () =>
         : to_route('login')
 )->name('index');
 
+Route::get('/dev/{path}', fn ($path) => inertia(str_replace('-', '/', $path)));
+
 Route::middleware('auth')->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
     Route::resource('clients', ClientController::class);
-    Route::resource('clients.appointments', ClientAppointmentController::class)->only(['index', 'create', 'store']);
+    Route::resource('clients.appointments', ClientAppointmentController::class);
+
+    Route::resource('technicians', TechnicianController::class);
+    Route::resource('technicians.appointments', ClientAppointmentController::class);
+    Route::resource('technicians.service_records', ClientAppointmentController::class);
+
     Route::resource('vehicles', VehicleController::class);
     Route::resource('appointments', AppointmentController::class);
-    Route::resource('technicians', TechnicianController::class);
     Route::resource('service_records', ServiceRecordController::class);
 });
 
